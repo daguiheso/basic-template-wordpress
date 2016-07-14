@@ -7,10 +7,13 @@
 				Últimos Trabajos
 			</div>
 			<div class="block__body grid">
-				<?php 
-					if(have_posts()) : 
-						while(have_posts())  :
-							the_post();
+				<?php
+					$args = array('cat' => 5);
+					$category_posts = new WP_Query($args);
+
+					if($category_posts->have_posts()) : 
+						while($category_posts->have_posts()) :
+							$category_posts->the_post();
 				?>
 							<article class="block grid--item-4">
 								<h2 class="block__title"><?php the_title(); ?></h2>
@@ -34,7 +37,6 @@
 				<?php
 					endif;
 				?>
-
 			</div>
 		</div>
 		<?php get_sidebar(); ?>
