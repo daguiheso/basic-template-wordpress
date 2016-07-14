@@ -8,12 +8,45 @@
 			</div>
 			<div class="block__body grid">
 				<?php
-					$args = array('cat' => 5);
-					$category_posts = new WP_Query($args);
+					$args = array('cat' => 6,'author' => "daguiheso", 'posts_per_page' => 1);
+					$filter_posts = new WP_Query($args);
 
-					if($category_posts->have_posts()) : 
-						while($category_posts->have_posts()) :
-							$category_posts->the_post();
+					if($filter_posts->have_posts()) : 
+						while($filter_posts->have_posts()) :
+							$filter_posts->the_post();
+				?>
+							<article class="block grid--item-4">
+								<h2 class="block__title"><?php the_title(); ?></h2>
+								<div class="block__body">
+									<p><?php the_excerpt(); ?></p>
+									<footer>
+										<div>
+											<small><?php the_tags(); ?></small>
+										</div>
+										<div>
+										<b><?php the_author(); ?></b>
+										</div>
+									</footer>
+								</div>
+							</article>
+				<?php 
+						endwhile;
+						else : 
+				?>
+						<h4>Huy, no encontramos entradas</h4>
+				<?php
+					endif;
+					wp_reset_postdata();
+				?>
+
+
+				<?php
+					$args = array('cat' => 5,'author' => "daguiheso");
+					$filter_posts = new WP_Query($args);
+
+					if($filter_posts->have_posts()) : 
+						while($filter_posts->have_posts()) :
+							$filter_posts->the_post();
 				?>
 							<article class="block grid--item-4">
 								<h2 class="block__title"><?php the_title(); ?></h2>
