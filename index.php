@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title><?php bloginfo(title); ?></title>
-</head>
+<?php get_header("home"); ?>
 <body>
-	<h1><?php bloginfo(name); ?></h1>
-
-	<ul>
-		<li><?php bloginfo(description); ?></li>
-		<li><?php bloginfo(stylesheet_url); ?></li>
-		<li><?php bloginfo(language); ?></li>
-		<li><?php bloginfo(url); ?></li>
-		<li><?php bloginfo(stylesheet_directory); ?></li>
-	</ul>
+	<h1 class="page-heading max-width"><?php bloginfo(name); ?></h1>
+	<div class="grid max-width">
+		<div class="block grid--item-9">
+			<div class="block__title">
+				Bloque Principal
+			</div>
+			<div class="block__body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut facilis, totam ratione quaerat. Facilis iste, non alias iusto odit facere ut tempora aperiam aspernatur deserunt est quidem maiores. Obcaecati, voluptatibus!</p>
+			</div>
+		</div>
+		<?php get_sidebar(); ?>
+	</div>
+	<?php get_footer(); ?>
 </body>
 </html>
