@@ -7,12 +7,11 @@
 				Últimos Trabajos
 			</div>
 			<div class="block__body grid">
-				<?php  
-					if ( have_posts() ) {
-						while (have_posts()) {
+				<?php 
+					if(have_posts()) : 
+						while(have_posts())  :
 							the_post();
-							?>
-
+				?>
 							<article class="block grid--item-4">
 								<h2 class="block__title"><?php the_title(); ?></h2>
 								<div class="block__body">
@@ -27,11 +26,15 @@
 									</footer>
 								</div>
 							</article>
-
-						<?php
-						}
-					}
+				<?php 
+						endwhile;
+						else : 
 				?>
+						<h4>Huy, no encontramos entradas</h4>
+				<?php
+					endif;
+				?>
+
 			</div>
 		</div>
 		<?php get_sidebar(); ?>
