@@ -1,43 +1,33 @@
 <?php get_header(); ?>
 <body>
-	<h1 class="page-heading max-width"><?php bloginfo(name); ?></h1>
-	<div class="grid max-width">
-		<div class="block grid--item-9">
-			<div class="block__title">
-				Últimos Trabajos
-			</div>
-			<div class="block__body grid">
-				<?php
-					if(have_posts()) : 
-						while(have_posts()) :
-							the_post();
-				?>
-							<article class="block grid--item-4">
-								<h2 class="block__title"><?php the_title(); ?></h2>
-								<div class="block__body">
-									<p><?php the_excerpt(); ?></p>
-									<footer>
-										<div>
-											<small><?php the_tags(); ?></small>
-										</div>
-										<div>
-											<b><?php the_author(); ?></b>
-										</div>
-										
-										<a href="<?php the_permalink(); ?>">Leer más</a>
-									</footer>
+	<?php
+		if(have_posts()) : 
+			while(have_posts()) :
+				the_post();
+	?>
+				<h1 class="page-heading max-width"><?php the_title(); ?></h1>
+				<main class="max-width">
+					<article class="block">
+						<div class="block__title">Escrito por: <?php the_author(); ?></div>
+						<div class="block__body">
+							<p><?php the_content(); ?></p>
+							<footer>
+								<div>
+									<small><?php the_tags(); ?></small>
 								</div>
-							</article>
-				<?php 
-						endwhile;
-						else : 
-				?>
-						<h4>Huy, no encontramos entradas</h4>
-				<?php
-					endif;
-				?>
-			</div>
-		</div>
-		<?php get_sidebar(); ?>
-	</div>
-	<?php get_footer(); ?>
+								<div>
+									<b></b>
+								</div>
+							</footer>
+						</div>
+					</article>
+				</main>
+	<?php 
+			endwhile;
+			else : 
+	?>
+			<h4>Huy, no encontramos entradas</h4>
+	<?php
+		endif;
+	?>
+	<?php get_footer("single"); ?>
