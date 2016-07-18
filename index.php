@@ -18,11 +18,12 @@
 							<article class="block grid--item-4">
 								<h2 class="block__title"><?php the_title(); ?></h2>
 								<?php 
-									if ( has_post_thumbnail()) {
-										the_post_thumbnail('thumbnail');
-										the_post_thumbnail('medium');
-										the_post_thumbnail('large');
-										the_post_thumbnail('full');
+									if ( has_post_thumbnail()) { ?>
+										<picture>
+											<source srcset="<?php the_post_thumbnail_url('full'); ?>" media="(min-width: 600px)">
+											<img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="" /> 
+										</picture>
+								<?php
 									}
 								?>
 								<div class="block__body">
